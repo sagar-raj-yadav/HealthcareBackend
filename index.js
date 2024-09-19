@@ -8,10 +8,7 @@ const PORT = 5000;
 // Middleware to parse JSON
 app.use(express.json());
 
-// Root endpoint
-app.get('/', (req, res) => {
-    res.send("Healthcare service");
-});
+
 
 // Use the service routes
 app.use('/api', ServiceRoute);
