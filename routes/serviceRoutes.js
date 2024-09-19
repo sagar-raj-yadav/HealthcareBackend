@@ -7,10 +7,7 @@ router.post('/addservice', async (req, res) => {
   try {
     const { name, description, price } = req.body;
 
-    // Basic validation
-    if (!name || !description || price == null) {
-      return res.status(400).send('All fields are required');
-    }
+    
 
     const newService = new Service({ name, description, price });
     await newService.save();
