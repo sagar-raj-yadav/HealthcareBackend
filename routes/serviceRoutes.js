@@ -61,7 +61,9 @@ router.put('/updateservice/:id', async (req, res) => {
       { new: true, runValidators: true }
     );
 
-  
+    if (!updatedService) {
+      return res.status(404).send('Service not found');
+    }
 
     res.send(updatedService);
   } catch (err) {
