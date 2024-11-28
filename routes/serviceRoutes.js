@@ -71,21 +71,6 @@ router.put('/updateservice/:id', async (req, res) => {
 });
 
 
-// 4. Delete a service
-router.delete('/deleteservice/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
 
-    const deletedService = await Service.findByIdAndDelete(id);
-
-    if (!deletedService) {
-      return res.status(404).send('Service not found');
-    }
-
-    res.send('Service deleted');
-  } catch (err) {
-    res.status(500).send('Server Error');
-  }
-});
 
 export default router;
