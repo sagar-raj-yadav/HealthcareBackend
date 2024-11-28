@@ -48,7 +48,27 @@ router.get('/getservice/:id', async (req, res) => {
     }
   });
   
+// 3. Update a service
+router.put('/updateservice/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, price } = req.body;
 
+    const updatedService = await Service.findByIdAndUpdate(
+      id,
+      { name, description, price },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedService) {
+      return res.status(404).send('Service not found');
+    }
+
+    res.send(updatedService);
+  } catch (err) {
+    res.status(500).send('Server Error');
+  }
+});
 
 
 // 4. Delete a service
